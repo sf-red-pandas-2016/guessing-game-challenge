@@ -21,15 +21,16 @@ class GuessingGame
   end
 
   def has_lost?
-    @num_guesses <= 0 if !has_won?
+    return false if @won
+    @num_guesses == 0
   end
 
   def guess(guessed_num)
     return "You already won. The number was #{@secret_num}" if has_won?
     return "You already lost. The number was #{@secret_num}" if has_lost?
     if guessed_num == @secret_num
-       @won = true
-       @num_guesses -= 1
+      @won = true
+      @num_guesses -= 1 if @num_guesses > 0
       return @congrats_message + " The number was #{@secret_num}"
     end
     unless guessed_num == @secret_num
