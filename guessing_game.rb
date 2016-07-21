@@ -4,7 +4,6 @@ class GuessingGame
 
   def initialize(secret_number, allowed_guesses)
     @secret_number = secret_number
-    @allowed_guesses = allowed_guesses
     @congrats_message = "Yay, you won!"
     @lost_message = "You lost!"
     @remaining_guesses = allowed_guesses
@@ -16,8 +15,6 @@ class GuessingGame
   end
 
   def has_won?
-    # if game over is true and guessed number == secret number
-    #return true
     if @game_over && @history.include?(@secret_number)
       @status = "You already won."
       true
@@ -27,8 +24,6 @@ class GuessingGame
   end
 
   def has_lost?
-    # if game over is true and history does not include the secret number
-    # return true
     if @game_over && !@history.include?(@secret_number)
       @status = "You already lost."
       true
