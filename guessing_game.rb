@@ -1,6 +1,6 @@
 class GuessingGame
 
-  attr_reader :num_guesses
+  attr_reader :num_guesses, :secret_num
   attr_accessor :congrats_message
 
   def initialize(secret_num, num_guesses)
