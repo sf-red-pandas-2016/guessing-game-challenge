@@ -1,3 +1,5 @@
+# require 'pry'
+
 class GuessingGame
   attr_reader :remaining_guesses
   attr_accessor :congrats_message
@@ -13,6 +15,9 @@ class GuessingGame
     @game_over = false
     @answer = " The number was #{@secret_number}"
   end
+
+  # initialize methods should be lean and not prone to bugs
+  # create a #messages method
 
   def has_won?
     if @game_over && @history.include?(@secret_number)
@@ -35,18 +40,19 @@ class GuessingGame
   def guess(guessed_number)
     return game_over_warning if @game_over
     @remaining_guesses -= 1 unless @history.include?(guessed_number)
-    @optional_response = check_remaining_guesses
+    check_remaining_guesses
 
-    if guessed_number < @secret_number
-      @history << guessed_number
+    # binding.pry
+    @history << guessed_number
+
+    case guessed_number <=> @secret_number
+    when -1
       response = "Too low!" + @optional_response
-    elsif guessed_number > @secret_number
-      @history << guessed_number
-      response = "Too high!" + @optional_response
-    elsif guessed_number == @secret_number
-      @history << guessed_number
+    when 0
       @game_over = true
-      return @congrats_message + @answer
+      response = "Correct! The number was 8"
+    when 1
+      response = "Too high!" + @optional_response
     end
 
     if @remaining_guesses == 0
@@ -57,19 +63,20 @@ class GuessingGame
     end
   end
 
+
+
   def check_remaining_guesses
     if @remaining_guesses == 1
       @optional_response = " WARNING: Only one guess left!"
     else
-      @optional_response = ""
+      @optional_response = ''
     end
   end
 
   def game_over_warning
-    if @game_over && has_lost?
-      @status + @answer
-    elsif @game_over && has_won?
-      @status + @answer
-    end
+    return if @game_over
+    @status + @answer
   end
 end
+
+

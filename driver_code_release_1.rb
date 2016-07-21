@@ -50,6 +50,7 @@ copied_game = Marshal.load(Marshal.dump(game))
 
 puts "Correct guess gets feedback for the custom congrats message"
 p (game.guess(8) == "Correct! The number was 8")
+
 p (winning_game.guess(100) == "Yay, you won! The number was 100")
 
 puts "Losing games get a loss message"
