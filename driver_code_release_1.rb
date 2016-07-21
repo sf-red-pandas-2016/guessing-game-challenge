@@ -75,3 +75,13 @@ p (game.has_lost? == false)
 puts "Outcome is recorded correctly for lost game"
 p (losing_game.has_won? == false)
 p (losing_game.has_lost? == true)
+
+# OTHER TEST CODE
+# agame = GuessingGame.new(5,2)
+# p agame.remaining_guesses
+# p agame.guess(6)
+# p agame.remaining_guesses
+# p agame.guess(4)
+# p agame.remaining_guesses
+# p agame.guess(8)
+# p agame.remaining_guesses
