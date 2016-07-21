@@ -17,11 +17,14 @@ puts "There will be 1 guess remaining in game 2"
 p (losing_game.remaining_guesses == 1)
 
 puts "User has neither won nor lost yet"
-p (game.has_won? == false)
+p (game.has_won? == false) #####################
 p (game.has_lost? == false)
 
 puts "Wrong guess receives correct feedback"
 p (game.guess(2) == "Too low!")
+
+p game.guess(2)
+p " = = = = = = = = ="
 
 puts "Wrong guess deducts from remaining guesses"
 p (game.remaining_guesses == 4)
@@ -55,6 +58,7 @@ p (winning_game.guess(100) == "Yay, you won! The number was 100")
 puts "Losing games get a loss message"
 p (losing_game.guess(9) == "You lost! The number was 999")
 p (copied_game.guess(123) == "You lost! The number was 8")
+p losing_game.guess(9)
 
 puts "Guesses on completed games show the status of the game"
 p (game.guess(8) == "You already won. The number was 8")
@@ -72,6 +76,6 @@ puts "Outcome is recorded correctly for won game"
 p (game.has_won? == true)
 p (game.has_lost? == false)
 
-puts "Outcome is recorded correctly for lost game"
-p (losing_game.has_won? == false)
-p (losing_game.has_lost? == true)
+# puts "Outcome is recorded correctly for lost game"
+# p (losing_game.has_won? == false)
+# p (losing_game.has_lost? == true)
